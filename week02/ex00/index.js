@@ -15,7 +15,7 @@ function checkCorrect(value, name) {
     var names = ['years', 'months', 'days', 'hours', 'minutes'];
 
     if (number < 0 || !names.includes(name))
-        throw new TypeError('Передано неверное значение');
+        throw new TypeError;
 }
 function changeDate(value, name, date, sign) {
     checkCorrect(value, name);
@@ -37,12 +37,10 @@ function changeDate(value, name, date, sign) {
             date.setMinutes(date.getMinutes() + value);
             break;
     }
-    return date;
 }
 
 module.exports = function (date) {
     date = new Date(date);
-    date.setHours(date.getHours() + 3);
 
     var time = {
         get value() {
@@ -57,6 +55,5 @@ module.exports = function (date) {
             return this;
         }
     };
-    
     return time;
 };
